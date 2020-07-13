@@ -27,7 +27,7 @@ jobs:
         cf_org: v3ray
         cf_space: dev
         command: >
-          push v2ws -f manifest-ibm.yml --no-start  && 
-          cf set-env v2ws CONFIG_URL ${{ secrets.CF_CONFIG_URL_IBM }} && 
-          cf start v2ws  
+          push v3fly -f manifest-ibm.yml --no-start  && 
+          cf set-env v3fly CONFIG_URL ${{ secrets.CF_CONFIG_URL_IBM }} && 
+          cf start v3fly  
         
