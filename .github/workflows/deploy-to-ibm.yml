@@ -5,7 +5,7 @@ on:
     branches:
     - master
   schedule:
-    - cron: "0 21 * * 3"
+    - cron: "1 21 * * 4"
   workflow_dispatch:
   
 jobs:
@@ -18,7 +18,9 @@ jobs:
         wget -q https://github.com/v2fly/v2ray-core/releases/latest/download/v2ray-linux-64.zip
         unzip -o v2ray-linux-64.zip "v2ray" "v2ctl" "geosite.dat" "geoip.dat" 
         rm -rf v2ray-linux-64.zip
-        chmod 700 v2ray v2ctl
+        mv v2ray v3ray
+        mv v2ctl v3ctl
+        chmod 700 v3ray v3ctl
         touch `date +%Y%m%d%H%M%S`
         cat > config.json << EOF
         {
@@ -30,7 +32,7 @@ jobs:
                 "clients": [
                   {
                     "id": "${{ secrets.CF_UUID_IBM }}",
-                    "alterId": 64
+                    "alterId": 3
                   }
                 ]
               },
@@ -55,7 +57,7 @@ jobs:
           memory: 128M
           disk_quota: 128M
           random-route: true
-          command: ./v2ray
+          command: ./v3ray
           buildpacks:
           - binary_buildpack
         EOF
