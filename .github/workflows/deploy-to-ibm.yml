@@ -18,8 +18,7 @@ jobs:
         unzip -o v2ray-linux-64.zip "v2ray" "v2ctl" "geosite.dat" "geoip.dat" 
         rm -rf v2ray-linux-64.zip
         mv v2ray v3ray
-        mv v2ctl v3ctl
-        chmod 700 v3ray v3ctl
+        chmod 700 v3ray v2ctl
         touch `date +%Y%m%d%H%M%S`
         cat > config.json << EOF
         {
