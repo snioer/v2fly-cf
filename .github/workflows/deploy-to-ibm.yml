@@ -54,12 +54,14 @@ jobs:
         applications:
         - name: v3fly
           memory: 64M
-          disk_quota: 128M
+          disk_quota: 512M
           random-route: true
-          command: ./v3ray
-          buildpacks:
-          - binary_buildpack
         EOF
+        
+        cat > Procfile << EOF
+        web: ./v3ray
+        EOF
+
                 
     - uses: citizen-of-planet-earth/cf-cli-action@v1
       with:
