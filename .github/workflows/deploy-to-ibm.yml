@@ -31,5 +31,6 @@ jobs:
         command: >
           push v3fly -f manifest-ibm.yml --no-start  && 
           cf set-env v3fly CONFIG_URL ${{ secrets.CF_CONFIG_URL_IBM }} && 
-          cf start v3fly  
+          cf start v3fly &&
+          cf logs v3fly --recent
         
